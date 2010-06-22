@@ -4,9 +4,9 @@
 
 // Verifica se as variaves matricula e senha foram definidas
 
-if (isset($_SESSION['matricula']) && isset($_SESSION['senha']))
+if (isset($_SESSION['login']) && isset($_SESSION['senha']))
     {
-        $login_usuario = $_SESSION['matricula'];
+        $login_usuario = $_SESSION['login'];
     }
 else // Caso nao, destroi a sessao e manda o usuario de volta para a pagina de login
     {

@@ -174,11 +174,12 @@ switch ($request_reference) {
 
             break;
 
+             
 
         }
 
         }
 
 //Fecha conexão com o banco de dados
-pg_close($bd);
+pg_close();
 ?>

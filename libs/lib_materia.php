@@ -119,5 +119,5 @@ switch ($request_reference) {
         }
 
 //Fecha conexão com o banco de dados
-pg_close($bd);
+pg_close();
 ?>

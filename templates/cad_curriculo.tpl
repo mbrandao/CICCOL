@@ -8,6 +8,7 @@
             var ultimo_emprego = $("#cad_curriculo_ultimo_emprego").val();
             var cargo = $("#cad_curriculo_cargo").val();
             var id_curriculo = $("#cad_curriculo_id").val();
+            var dt_criacao = $("#cad_cur_dt_criacao").val();
 
             var interesse = [];
 
@@ -15,18 +16,11 @@
             $("#select2 option:selected").each(function() {
                 interesse.push($(this).val());
             });
-<<<<<<< Updated upstream
        
 
             //Armazena os valores do formulário na variável dataString
-           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse;
-=======
+           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse + '&dt_criacao='+dt_criacao;
 
->>>>>>> Stashed changes
-
-            //Armazena os valores do formulário na variável dataString
-           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse;
-           
 
             //Defique qual action será passada na url
             if (id_curriculo=="")
@@ -42,8 +36,10 @@
                     data: dataString,
                     //dataType: "html",
                     success: function(){
-                      //alert(msg);
-                      alert("Currículo feito com sucesso!");
+                      if(opcao=='inserir_curriculo')
+                          alert("Currículo cadastrado com sucesso!");
+                      else
+                          alert("Currículo atualizado com sucesso!");
                     }
                 });
 
@@ -79,6 +75,12 @@ $('#bt_limpar_cad_curriculo').click(function(){
                     success: function(){
                        //Limpa o formulário
                        alert("Currículo apagado com sucesso!");
+                      
+                       $("#cad_curriculo_perfil_profissional").val("");
+                       $("#cad_curriculo_ultimo_emprego").val("");
+                       $("#cad_curriculo_cargo").val("");
+                       $("#cad_curriculo_id").val("");
+                       $("#cad_cur_dt_criacao").val("");
 
                     }
              });
@@ -89,7 +91,7 @@ $('#bt_limpar_cad_curriculo').click(function(){
 
 $('#add').click(function() {
       return !$('#select1 option:selected').remove().appendTo('#select2');
-
+      
 });
 
 $('#remove').click(function() {
@@ -106,27 +108,19 @@ $('#remove').click(function() {
 <div id="cad_cur">
     <form class="dialog-form" id="form_cad_curriculo" >
         <fieldset class="ui-widget ui-widget-content ui-corner-all">
-		<legend class="ui-widget ui-widget-header ui-corner-all">Currículo</legend>
-                    <br/>
+		<legend class="ui-widget ui-widget-header ui-corner-all">Currículo</legend>          
 
+                    <p><!--{$dtAtualizacao}--></p><br/>
                     <label>Perfil Profissional</label>
-<<<<<<< Updated upstream
                     <TEXTAREA type="text" name="cad_curriculo_perfil_profissional" id="cad_curriculo_perfil_profissional" class="text ui-widget-content ui-corner-all" COLS="35" ROWS="6"><!--{$perfil}--></TEXTAREA><br/><br/>
 
                     <label>Último Emprego</label>
                     <TEXTAREA type="text" name="cad_curriculo_ultimo_emprego" id="cad_curriculo_ultimo_emprego" class="text ui-widget-content ui-corner-all" COLS="35" ROWS="3"><!--{$ultEmprego}--></TEXTAREA><br/><br/>
                     
-=======
-                    <TEXTAREA type="text" name="cad_curriculo_perfil_profissional" id="cad_curriculo_perfil_profissional" class="text ui-widget-content ui-corner-all" COLS="40" ROWS="6"><!--{$perfil}--></TEXTAREA><br/><br/>
-
-                    <label>Último Emprego</label>
-                    <TEXTAREA type="text" name="cad_curriculo_ultimo_emprego" id="cad_curriculo_ultimo_emprego" class="text ui-widget-content ui-corner-all" COLS="20" ROWS="5"><!--{$ultEmprego}--></TEXTAREA><br/><br/>
-
->>>>>>> Stashed changes
 
                     <label>Cargo Atual</label>
                     <select id="cad_curriculo_cargo" name="cad_curriculo_cargo">
-                        <option>Selecione</option>
+                        <option><!--{$descCargo}--></option>
                         <!--{section name=cont_cargo loop=$cargo}-->
                         <option><!--{$cargo[cont_cargo].cargo}--></option>
                        <!--{/section}-->
@@ -139,7 +133,7 @@ $('#remove').click(function() {
                                 <option value="<!--{$interesse[cont_interesse].id}-->"><!--{$interesse[cont_interesse].interesse}--></option>
                             <!--{/section}-->
                             </select></td>
-
+                    
 
                             <td align="center"><select multiple="multiple" id="select2" name="select2" size="5"></select></td>
                        </tr>
@@ -152,6 +146,7 @@ $('#remove').click(function() {
 
 
                     <input type="text" id="cad_curriculo_id" name="cad_curriculo_id" value="<!--{$idCurriculo}-->" style="display:none;" /><br/>
+                    <input type="text" size="10" name="cad_cur_dt_criacao" id="cad_cur_dt_criacao" value="<!--{$dtCriacao}-->" style="display:none;" /><br/>
 
                     <div id="dialog-form_button">
                         <input type="button" value="OK" id="bt_ok_cad_curriculo" title="OK" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">

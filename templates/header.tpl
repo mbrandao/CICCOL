@@ -5,7 +5,7 @@
 
 	<div id="header" >
             <div id="logo"><img src="style/images/lo.png"></div>
-            <div id="banner"><img src="style/images/bk_topo.jpg"></img> 
+            <div id="banner"><img src="style/images/03.png"></img>
 			</div>
 			 <div id="menu_top">
 

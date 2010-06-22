@@ -186,12 +186,12 @@ switch ($request_reference) {
                 $request_id = trim($_REQUEST['cad_id']);
 
                 //Verifica se já existe algum cadastro na tebela docente e na tabela adminmoderador
-                $SQL3 = pg_query("SELECT matricula FROM adminmoderador WHERE matricula = '$request_matricula' ") or die ("Não foi possível consultar a tebela disciplina".pg_last_error());
+                $SQL3 = pg_query("SELECT matricula FROM adminmoderador WHERE matricula = '$request_matricula' ") or die ("Não foi possível consultar a tebela dos Administradores e Moderadores".pg_last_error());
                 $row1 = pg_fetch_array($SQL3);
 
                     if(!$row1[matricula]){
 
-                        $SQL4 = pg_query("SELECT matricula FROM docente WHERE matricula = '$request_matricula' ") or die ("Não foi possível consultar a tebela disciplina".pg_last_error());
+                        $SQL4 = pg_query("SELECT matricula FROM docente WHERE matricula = '$request_matricula' ") or die ("Não foi possível consultar a tebela  Administradores e Moderadores".pg_last_error());
                         $row4 = pg_fetch_array($SQL4);
 
                         if(!$row4[matricula]){
@@ -233,5 +233,5 @@ switch ($request_reference) {
         }
 
 //Fecha conexão com o banco de dados
-pg_close($bd);
+pg_close();
 ?>

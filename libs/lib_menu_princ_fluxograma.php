@@ -184,5 +184,5 @@ $sql_requisito_html = pg_query("SELECT cod_disciplina, nome FROM disciplina");
 <?php
 }
 
-pg_close($db);
+pg_close();
 ?>

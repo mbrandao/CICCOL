@@ -7,15 +7,35 @@
 
                 var login = $('#txtLogin').val();
                 var senha = $.md5($('#pwdSenha').val());
-
-
+                
                 dataString = 'login=' + login + '&senha=' + senha;
                 
                     $.ajax({
                     type: "GET",
                     url: "libs/lib_login.php",
                     processData: false,
-                    data: dataString
+                    data: dataString,
+                    success:function(msg){
+
+                        if(msg == 0){
+                           alert("Usuário ou senha inválidos")
+                        }
+                        if(msg=="root"){
+                             location="manage_root.php";
+                        }
+                        if(msg == 1){
+                           location="manage_administrador.php";
+                        }
+                        if(msg == 2){
+                           location="manage_moderador.php";
+                       }
+                        if(msg == 3){
+                           location="manage_professor.php";
+                        }
+                        if(msg == 4){
+                           location="manage_aluno.php";
+                        }
+                    }
                });
             })
 
@@ -56,12 +76,6 @@
                 <h2>Duração máxima permitida pela legislação Federal</h2>
                       <p class="center">8 anos</p>
 
-
-
-                      <a href="manage_moderador.php">Moderador | </a>
-                    <a href="manage_administrador.php">Admnistrador |</a>
-                    <a href="manage_professor.php">Professor |</a>
-                    <a href="manage_aluno.php">Aluno</a>
 		
             </div>
             

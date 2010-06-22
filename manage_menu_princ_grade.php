@@ -2,6 +2,7 @@
 header("Content-Type: text/html; charset=utf-8",true);
 require_once 'libs/Smarty.class.php';
 require_once 'head_1.php';
+require_once 'head_dialog.php';
 include('libs/dbconfig.php');
 
 

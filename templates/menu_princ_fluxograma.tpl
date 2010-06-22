@@ -21,7 +21,7 @@ function iFrameHeight() {
         <p class="heading">Fluxograma</p>
 
 <p>Para baixar o fluxograma clique aqui</p>
-<textarea name="html" cols="60" rows="20">
+
         <iframe
           onload="iFrameHeight()"
              id="blockrandom"
@@ -34,7 +34,7 @@ function iFrameHeight() {
              frameborder="0"
              class="wrapper" >
         </iframe>
-        </textarea>
+        
     </body>
 </html>
 

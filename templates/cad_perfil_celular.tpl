@@ -3,23 +3,22 @@
 
 var lastsel;
 jQuery("#list_cad_celular").jqGrid({
-    url:"libs/lib_celular.php?reference=celular&action=grid_buscar_celular",
+    url:"libs/lib_cad_perfil_celular.php?reference=celular&action=grid_buscar_celular",
     width: 500,
     height: 25,
     datatype: "xml",
-   colNames:['DDD','Número','Operadora'],
+    colNames:['DDD','Número','Operadora'],
     colModel:[
         {name:'cad_celular_ddd',index:'cad_celular_ddd', width:60,align:"center"},
         {name:'cad_celular_numero',index:'cad_celular_numero', width:120,align:"center"},
         {name:'cad_celular_operadora',index:'cad_celular_operadora', width:120,align:"center"},
         
     ],
-    //rowNum:10,
-    //rowList:[10,20,30],
-    pager: '',
+    pager: '#pager_cad_celular',
     sortname: 'id',
-    //viewrecords: true,
-    //sortorder: "desc",
+    pgbuttons: false,
+    pgtext: false,
+    pginput:false,
     imgpath: 'themes/steel/images',
     onSelectRow: function(id){
         if(id && id!=lastsel){
@@ -27,8 +26,7 @@ jQuery("#list_cad_celular").jqGrid({
             lastsel=id;
         }
     }
-   // editurl: "local",
-   // caption: "celular"
+
 });
 
 //-----------------------------------Ação sobre o botão Novo ----------------------------
@@ -87,7 +85,7 @@ jQuery("#list_cad_celular").jqGrid({
         if(gsr){
             $.ajax({
                 type: "GET",
-                url: "libs/lib_celular.php?reference=celular&action=apagar_celular",
+                url: "libs/lib_cad_perfil_celular.php?reference=celular&action=apagar_celular",
                 processData: false,
                 data: dataString,
                 success: function(){
@@ -119,7 +117,7 @@ jQuery("#list_cad_celular").jqGrid({
                 operadora = "3";
             else if (operadora == "CLARO")
                 operadora = "4";
-             alert(operadora);
+             
             //Armazena os valores do formulário na variável dataString
             var dataString = 'ddd=' + ddd + '&numero=' + numero + '&operadora=' + operadora + '&cad_id=' + id_cad;
 
@@ -132,7 +130,7 @@ jQuery("#list_cad_celular").jqGrid({
             //Envia a variável dataString para a lib que insere no banco de dados
             $.ajax({
                     type: "GET",
-                    url: "libs/lib_celular.php?reference=celular&action="+ opcao,
+                    url: "libs/lib_cad_perfil_celular.php?reference=celular&action="+ opcao,
                     processData: false,
                     data: dataString,
                     success: function(msg){
@@ -152,20 +150,9 @@ $('#bt_cancelar_cad_celular').click(function(){
 
 })
 
-$(function() {
-
-                $("#cad_celular_nascimento").datepicker({
-                    changeMonth: true,
-                    changeYear: true
-
-                });
-
-	});
-
-
 //--------------------------------------Máscaras---------------------------------------------------
 
-$("#cad_celular_ddd").mask("999",{placeholder:" "});
+$("#cad_celular_ddd").mask("99",{placeholder:" "});
 $("#cad_celular_numero").mask("99999999",{placeholder:" "});
 
 

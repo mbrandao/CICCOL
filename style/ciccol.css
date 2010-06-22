@@ -433,6 +433,23 @@ h3 {
     margin-top:30px;
 }
 
+#cad_cur p{
+    font-style: italic;
+    margin-left: 43%;
+}
+
+#cad_info{
+    width: 69%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:40px;
+}
+
+#cad_info p{
+    font-style: italic;
+    margin-left: 46%;
+}
+
 .dialog-form input.text {
     margin-bottom:12px;
     /*width:60%;*/

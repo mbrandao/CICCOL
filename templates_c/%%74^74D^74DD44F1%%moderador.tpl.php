@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-05-30 17:49:16
+<?php /* Smarty version 2.6.26, created on 2010-06-15 23:40:32
          compiled from moderador.tpl */ ?>
 <script type="text/javascript">
 
@@ -22,7 +22,8 @@ $(function() {
         </div>
 
       
-        <p class="msg_perfil">Bem-vindo(a), Fulano!</p>
+        <p class="msg_perfil">Bem-vindo(a), <?php echo $this->_tpl_vars['nome']; ?>
+</p>
 
         <form class="relogio_perfil" name="form_relogio">
         <input type="text" name="relogio" size="10" style="background-color : #f2f2f2; color : black; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_relogio.relogio.blur()">
@@ -33,21 +34,27 @@ $(function() {
 
             <h3>Editar Perfil</h3>
                 <ul>
-                    <li id="editar_perfil_dados"><a href="#">Alterar Dados</a></li>
+                    <li id="editar_perfil_dados_adminmoderador"><a href="#">Alterar Dados</a></li>
                     <li id="editar_perfil_imagem"><a href="#">Alterar Imagem</a></li>
-                    <li id="editar_perfil_senha"><a href="#">Alterar Senha</a></li>
                     <li id="cad_perfil_celular"><a href="#">Cadastrar Celular</a></li>
+                    <li id="alterar_senha"><a href="#">Alterar senha</a></li>
                 </ul>
             <h3>Cadastrar</h3>
                 <ul>
                     <li id="cad_cargo"><a href="#">Cargo</a></li>
-                    <li id="cad_materia"><a href="#">Materia</a></li>
+                    <li id="cad_sala"><a href="#">Sala</a></li>
+                    <li id="cad_areainteresse"><a href="#">Área de Interesse</a></li>
+                    <li id="cad_grade"><a href="#">Grade Acadêmica</a></li>
+                    <li id="cad_materia"><a href="#">Matéria</a></li>
                     <li id="cad_disciplina"><a href="#">Disciplina</a></li>
+                    <li id="cad_ementa"><a href="#">Ementa</a></li>
                     <li id="cad_horario"><a href="#">Horario</a></li>
+                    <li id="cad_requisito"><a href="#">Pré-requisito</a></li>
                     <li id="cad_professor"><a href="#">Professor</a></li>
                     <li id="cad_aluno"><a href="#">Aluno</a></li>
                     <li id="alocar_professor"><a href="#">Alocar Professor</a></li>
-                </ul>
+
+             </ul>
             <h3>Pagina Inicial</h3>
                 <ul>
                     <li id="adm_objetivo"><a href="#">Objetivo</a></li>
@@ -100,4 +107,4 @@ $(function() {
        <div id="footer">  &copy; 2010  | Desenvolvido por: NAUGENIE </div>
       
   </body>
-</html>
+</html>

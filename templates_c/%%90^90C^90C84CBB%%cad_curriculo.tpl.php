@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-06-03 16:24:11
+<?php /* Smarty version 2.6.26, created on 2010-06-18 10:03:31
          compiled from cad_curriculo.tpl */ ?>
 <script type="text/javascript" charset="ISO-8859-1">
     //-------------------------------------------- Ação sobre o botão OK --------------------------------------
@@ -10,6 +10,7 @@
             var ultimo_emprego = $("#cad_curriculo_ultimo_emprego").val();
             var cargo = $("#cad_curriculo_cargo").val();
             var id_curriculo = $("#cad_curriculo_id").val();
+            var dt_criacao = $("#cad_cur_dt_criacao").val();
 
             var interesse = [];
 
@@ -17,10 +18,10 @@
             $("#select2 option:selected").each(function() {
                 interesse.push($(this).val());
             });
-
+       
 
             //Armazena os valores do formulário na variável dataString
-           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse;
+           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse + '&dt_criacao='+dt_criacao;
 
 
             //Defique qual action será passada na url
@@ -37,8 +38,10 @@
                     data: dataString,
                     //dataType: "html",
                     success: function(){
-                      //alert(msg);
-                      alert("Currículo feito com sucesso!");
+                      if(opcao=='inserir_curriculo')
+                          alert("Currículo cadastrado com sucesso!");
+                      else
+                          alert("Currículo atualizado com sucesso!");
                     }
                 });
 
@@ -74,6 +77,12 @@ $('#bt_limpar_cad_curriculo').click(function(){
                     success: function(){
                        //Limpa o formulário
                        alert("Currículo apagado com sucesso!");
+                      
+                       $("#cad_curriculo_perfil_profissional").val("");
+                       $("#cad_curriculo_ultimo_emprego").val("");
+                       $("#cad_curriculo_cargo").val("");
+                       $("#cad_curriculo_id").val("");
+                       $("#cad_cur_dt_criacao").val("");
 
                     }
              });
@@ -84,7 +93,7 @@ $('#bt_limpar_cad_curriculo').click(function(){
 
 $('#add').click(function() {
       return !$('#select1 option:selected').remove().appendTo('#select2');
-
+      
 });
 
 $('#remove').click(function() {
@@ -101,21 +110,23 @@ $('#remove').click(function() {
 <div id="cad_cur">
     <form class="dialog-form" id="form_cad_curriculo" >
         <fieldset class="ui-widget ui-widget-content ui-corner-all">
-		<legend class="ui-widget ui-widget-header ui-corner-all">Currículo</legend>
-                    <br/>
+		<legend class="ui-widget ui-widget-header ui-corner-all">Currículo</legend>          
 
+                    <p><?php echo $this->_tpl_vars['dtAtualizacao']; ?>
+</p><br/>
                     <label>Perfil Profissional</label>
-                    <TEXTAREA type="text" name="cad_curriculo_perfil_profissional" id="cad_curriculo_perfil_profissional" class="text ui-widget-content ui-corner-all" COLS="40" ROWS="6"><?php echo $this->_tpl_vars['perfil']; ?>
+                    <TEXTAREA type="text" name="cad_curriculo_perfil_profissional" id="cad_curriculo_perfil_profissional" class="text ui-widget-content ui-corner-all" COLS="35" ROWS="6"><?php echo $this->_tpl_vars['perfil']; ?>
 </TEXTAREA><br/><br/>
 
                     <label>Último Emprego</label>
-                    <TEXTAREA type="text" name="cad_curriculo_ultimo_emprego" id="cad_curriculo_ultimo_emprego" class="text ui-widget-content ui-corner-all" COLS="20" ROWS="5"><?php echo $this->_tpl_vars['ultEmprego']; ?>
+                    <TEXTAREA type="text" name="cad_curriculo_ultimo_emprego" id="cad_curriculo_ultimo_emprego" class="text ui-widget-content ui-corner-all" COLS="35" ROWS="3"><?php echo $this->_tpl_vars['ultEmprego']; ?>
 </TEXTAREA><br/><br/>
-
+                    
 
                     <label>Cargo Atual</label>
                     <select id="cad_curriculo_cargo" name="cad_curriculo_cargo">
-                        <option>Selecione</option>
+                        <option><?php echo $this->_tpl_vars['descCargo']; ?>
+</option>
                         <?php unset($this->_sections['cont_cargo']);
 $this->_sections['cont_cargo']['name'] = 'cont_cargo';
 $this->_sections['cont_cargo']['loop'] = is_array($_loop=$this->_tpl_vars['cargo']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -177,7 +188,7 @@ $this->_sections['cont_interesse']['last']       = ($this->_sections['cont_inter
 </option>
                             <?php endfor; endif; ?>
                             </select></td>
-
+                    
 
                             <td align="center"><select multiple="multiple" id="select2" name="select2" size="5"></select></td>
                        </tr>
@@ -190,9 +201,11 @@ $this->_sections['cont_interesse']['last']       = ($this->_sections['cont_inter
 
 
                     <input type="text" id="cad_curriculo_id" name="cad_curriculo_id" value="<?php echo $this->_tpl_vars['idCurriculo']; ?>
-" style="display:none;" /><br/><br/><br/>
+" style="display:none;" /><br/>
+                    <input type="text" size="10" name="cad_cur_dt_criacao" id="cad_cur_dt_criacao" value="<?php echo $this->_tpl_vars['dtCriacao']; ?>
+" style="display:none;" /><br/>
 
-                    <div id="dialog-form_button"
+                    <div id="dialog-form_button">
                         <input type="button" value="OK" id="bt_ok_cad_curriculo" title="OK" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
                         <input type="button" value="Limpar" id="bt_limpar_cad_curriculo" title="Limpar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
                     </div>

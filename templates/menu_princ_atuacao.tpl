@@ -1,9 +1,7 @@
-<p class="heading"> Area de Atuacao</p>
+<p class="heading">Área de Atuação</p>
 
 
-
-<p><{!--$opcao--}><p>
-
+<p><!--{$atuacao}--><p>
 
 
 

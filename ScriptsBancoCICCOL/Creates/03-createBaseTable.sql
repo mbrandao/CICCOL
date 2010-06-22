@@ -157,6 +157,7 @@ CREATE TABLE Curriculo(
    perfil_profissional         VARCHAR(300)  NOT NULL,
    doc_matricula               VARCHAR(15)   NOT NULL   UNIQUE,
    id_cargo_atual              INTEGER,
+   dt_criacao				   TIMESTAMP     NOT NULL,
    
 
    PRIMARY KEY  (id_curriculo)

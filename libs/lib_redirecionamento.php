@@ -1,39 +1,30 @@
 <?php
-ob_start();
-session_start();
+
 include ("dbconfig.php");
 include("lib_valida_sessao.php");
-
-
 
 $iden = $_REQUEST['login'];
 
 
-// Liga o ID a pagina certa
-
-$consulta = pg_query("SELECT id_tpuser FROM autenticacao WHERE identificador = '$iden'") or die("Erro tabela usuario".pg_last_error());
+$consulta = pg_query("SELECT id_tpuser, id_user FROM autenticacao WHERE identificador = '$iden'") or die("Erro tabela usuario".pg_last_error());
 $saida = pg_fetch_array($consulta);
 
-//echo $saida[id_tpuser]; // Comecei do tp_user = 2 porque o 1 é o root!
+
 
 // dependendo do valor de tp_user ele vai encaminhar o usuário para a página correta!
+if( ($saida[id_tpuser]=='1') && ($saida[id_user] == '1') )
+    echo "root";
 
-if($saida[id_tpuser]=='3')
-  header("Location:manage_aluno.php");
-  //  echo "<script language='javaScript'>window.location.href='manage_aluno.php'</script>";
- // $redireciona = "$.ajax({  url:\"manage_aluno.php\",  cache: false,  });";
-     
-  
-/*
-if($saida=='3')
-    header("Location:manage_administrador.php");
+elseif($saida[id_tpuser]=='1')
+    echo "1";
 
-if($saida=='4')
-    header("Location:manage_professor.php");
+elseif($saida[id_tpuser]=='2')
+    echo "2";
 
-if($saida=='5')
-    header("Location:manage_aluno.php");
+elseif($saida[id_tpuser]=='3')
+    echo "3";
+ 
+elseif($saida[id_tpuser]=='4')
+    echo "4";
 
-*/
-ob_end_flush(); 
 ?>

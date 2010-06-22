@@ -1,21 +1,27 @@
 <?php
 header("Content-Type: text/html; charset=utf-8",true);
 require_once 'libs/Smarty.class.php';
+require_once 'head_1.php';
+include ("libs/dbconfig.php");
 
 $smarty = new Smarty();
 
 $smarty->template_dir = 'templates/';
 $smarty->compile_dir = 'templates_c/';
-$smarty->left_delimiter = '<{!--';
-$smarty->right_delimiter = '--}>';
+$smarty->left_delimiter = '<!--{';
+$smarty->right_delimiter = '}-->';
 
 $smarty->compile_check = true;
 $smarty->debugging = false;
 
-$objetivo = 'O Curso de Bacharelado em Ciência da Computação da Universidade Estadual de Santa Cruz visa formar profissionais capacitados a atuar, tanto no mercado de aplicações, como prosseguir estudos em cursos de pós-graduação, além de realizar atividades de pesquisa e desenvolvimento de novos produtos. A formação fundamental ampla  em computação é importante para garantir a sobrevivência profissional em uma área sujeita a transformações aceleradas.
-    oakoakjhdjhuysefgd';
+//Pega o objetivo cadastrado no banco
+$SQL = pg_query("SELECT area_atuacao FROM InfoCurso") or die("A consulta não pode ser realizada".pg_last_error());
 
-$smarty->assign('opcao', $objetivo);
+while ($row = pg_fetch_array($SQL)){
+     $area_atuacao = $row["area_atuacao"];
+}
+
+$smarty->assign('atuacao', $area_atuacao);
 
 $smarty->display('menu_princ_atuacao.tpl');
 

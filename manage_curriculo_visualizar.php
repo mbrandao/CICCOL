@@ -4,6 +4,7 @@ header("Content-Type: text/html; charset=utf-8",true);
 require_once 'libs/Smarty.class.php';
 require_once 'head_1.php';
 include ("libs/dbconfig.php");
+@session_start();
 
 
 $smarty = new Smarty();
@@ -16,8 +17,10 @@ $smarty->right_delimiter = '}-->';
 $smarty->compile_check = true;
 $smarty->debugging = false;
 
+$idUsuario = $_SESSION['idUsuario'];
+
 /* Faz uma consulta ao banco para pegar o nome e sobrenome do docente */
-$SQL = pg_query("SELECT nome, sobrenome FROM Usuario WHERE id_user IN (SELECT id_user FROM Autenticacao WHERE identificador = '12310488')") or die ("A consulta não pode ser realizada!".pg_last_error());
+$SQL = pg_query("SELECT nome, sobrenome FROM Usuario WHERE id_user='$idUsuario'") or die ("A consulta não pode ser realizada!".pg_last_error());
 
 while ($row_nome = pg_fetch_array($SQL)){
     $doc = $row_nome["nome"] . ' '. $row_nome["sobrenome"];
@@ -26,7 +29,7 @@ while ($row_nome = pg_fetch_array($SQL)){
 $smarty->assign('docente',$doc);
 
 //Pega o perfil profissional do currículo do professor cadastrado no banco
-$SQL = pg_query("SELECT perfil_profissional, id_curriculo FROM Curriculo WHERE doc_matricula = '12310488'") or die("Couldn t execute query".pg_last_error());
+$SQL = pg_query("SELECT perfil_profissional, id_curriculo FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user='$idUsuario')") or die("Couldn t execute query".pg_last_error());
 
 while ($row_perfil = pg_fetch_array($SQL)){
      $perfil = $row_perfil["perfil_profissional"];
@@ -35,7 +38,7 @@ while ($row_perfil = pg_fetch_array($SQL)){
 $smarty->assign('perfil',$perfil);
 
 //Pega o último emprego do currículo do professor cadastrado no banco
-$SQL = pg_query("SELECT  ultimo_emprego, id_curriculo FROM Curriculo WHERE doc_matricula = '12310488'") or die("A consulta não pode ser realizada!".pg_last_error());
+$SQL = pg_query("SELECT  ultimo_emprego, id_curriculo FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user='$idUsuario')") or die("A consulta não pode ser realizada!".pg_last_error());
 
 while ($row_ult_emprego = pg_fetch_array($SQL)){
      $ultEmprego = $row_ult_emprego["ultimo_emprego"];
@@ -45,7 +48,7 @@ $smarty->assign('ultEmprego',$ultEmprego);
 
 
 /* Faz uma consulta ao banco para pegar o cargo do docente */
-$SQL = pg_query("SELECT descricao FROM Cargo WHERE id_cargo IN (SELECT id_cargo_atual FROM Curriculo WHERE doc_matricula = '12310488')") or die ("A consulta não pode ser realizada!".pg_last_error());
+$SQL = pg_query("SELECT descricao FROM Cargo WHERE id_cargo IN (SELECT id_cargo_atual FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user='$idUsuario'))") or die ("A consulta não pode ser realizada!".pg_last_error());
 $rowCargo = pg_fetch_array($SQL);
 $descricao = $rowCargo["descricao"];
 
@@ -53,7 +56,7 @@ $smarty->assign('cargo',$descricao);
 
 
 //Pega a área de interesse do currículo do professor cadastrado no banco
-$SQL = pg_query("SELECT descricao, id_interesse FROM AreaInteresse WHERE id_interesse IN (SELECT id_interesse FROM (Curriculo NATURAL JOIN AreaInteresseCurriculo) WHERE doc_matricula = '12310488')") or die("A consulta não pode ser realizada!".pg_last_error());
+$SQL = pg_query("SELECT descricao, id_interesse FROM AreaInteresse WHERE id_interesse IN (SELECT id_interesse FROM (Curriculo NATURAL JOIN AreaInteresseCurriculo) WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user='$idUsuario'))") or die("A consulta não pode ser realizada!".pg_last_error());
 
 $interesse = array();
 

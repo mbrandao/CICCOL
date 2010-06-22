@@ -20,7 +20,7 @@ $(function() {
         </div>
 
       
-        <p class="msg_perfil">Bem-vindo(a), Fulano!</p>
+        <p class="msg_perfil">Bem-vindo(a), <!--{$nome}--></p>
 
         <form class="relogio_perfil" name="form_relogio">
         <input type="text" name="relogio" size="10" style="background-color : #f2f2f2; color : black; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;" onfocus="window.document.form_relogio.relogio.blur()">
@@ -31,10 +31,10 @@ $(function() {
 
             <h3>Editar Perfil</h3>
                 <ul>
-                    <li id="editar_perfil_dados"><a href="#">Alterar Dados</a></li>
+                    <li id="editar_perfil_dados_adminmoderador"><a href="#">Alterar Dados</a></li>
                     <li id="editar_perfil_imagem"><a href="#">Alterar Imagem</a></li>
-                    <li id="editar_perfil_senha"><a href="#">Alterar Senha</a></li>
                     <li id="cad_perfil_celular"><a href="#">Cadastrar Celular</a></li>
+                    <li id="alterar_senha"><a href="#">Alterar senha</a></li>
                 </ul>
             <h3>Cadastrar</h3>
                 <ul>
@@ -54,8 +54,7 @@ $(function() {
              </ul>
             <h3>Pagina Inicial</h3>
                 <ul>
-                    <li id="adm_objetivo"><a href="#">Objetivo</a></li>
-                    <li id="adm_atuacao"><a href="#">Atuacao</a></li>
+                    <li id="cad_info_curso"><a href="#">Informações do Curso</a></li>
                     <li id="adm_contato"><a href="#">Contato</a></li>
                    
                 </ul>

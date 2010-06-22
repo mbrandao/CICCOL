@@ -3,6 +3,7 @@
 header("Content-Type: text/html; charset=UTF-8",true);
 
 include "dbconfig.php";
+@session_start();
 
 //recebendo variável da ação
 $request_action = trim(strtolower($_REQUEST['action']));
@@ -17,17 +18,19 @@ switch ($request_reference) {
                 //Recebe as variáveis do datastring
                 $request_descricao = trim(($_REQUEST['descricao']));
                 $request_id = trim($_REQUEST['cad_id']);
+                $idUsuario = $_SESSION['idUsuario'];
 
                 //Pega o id do currículo do docente corrente
-                $SQL_Cur = ("SELECT id_curriculo FROM Curriculo WHERE doc_matricula='12310488'");
+                $SQL_Cur = ("SELECT id_curriculo, doc_matricula FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user=$idUsuario)");
                 $result_Cur = pg_query( $SQL_Cur ) or die("Não foi possível encontrar o número de matrícula do docente corrente.".pg_last_error());
                 $rowCur = pg_fetch_array($result_Cur);
                 $idCurriculo = $rowCur[id_curriculo];
+                $docMatricula = $rowCur[doc_matricula];
 
                 if ($idCurriculo=="")
                 {
                     //Insere no banco
-                    $SQL = ("INSERT INTO ProjetosPesquisa (descricao, id_curriculo, doc_matricula) VALUES ('$request_descricao', NULL, '12310488')");
+                    $SQL = ("INSERT INTO ProjetosPesquisa (descricao, id_curriculo, doc_matricula) VALUES ('$request_descricao', NULL, '$docMatricula')");
 
                     //Verifica se foi inserido com sucesso
                     $result = pg_query( $SQL ) or die("O cadastro do projeto não foi realizado com sucesso!".pg_last_error());
@@ -35,7 +38,7 @@ switch ($request_reference) {
                 else
                 {
                     //Insere no banco
-                    $SQL = ("INSERT INTO ProjetosPesquisa (descricao, id_curriculo, doc_matricula) VALUES ('$request_descricao', '$idCurriculo', '12310488')");
+                    $SQL = ("INSERT INTO ProjetosPesquisa (descricao, id_curriculo, doc_matricula) VALUES ('$request_descricao', '$idCurriculo', '$docMatricula')");
 
                     //Verifica se foi inserido com sucesso
                     $result = pg_query( $SQL ) or die("O cadastro do projeto não foi realizado com sucesso!".pg_last_error());
@@ -51,12 +54,14 @@ switch ($request_reference) {
                 //Recebe as variáveis do datastring
                 $request_descricao = trim(($_REQUEST['descricao']));
                 $request_id = trim($_REQUEST['cad_id']);
+                $idUsuario = $_SESSION['idUsuario'];
 
                 //Pega o id do currículo do docente corrente
-                $SQL_Cur = ("SELECT id_curriculo FROM Curriculo WHERE doc_matricula='12310488'");
+                $SQL_Cur = ("SELECT id_curriculo, doc_matricula FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user=$idUsuario)");
                 $result_Cur = pg_query( $SQL_Cur ) or die("Não foi possível encontrar o número de matrícula do docente corrente.".pg_last_error());
                 $rowCur = pg_fetch_array($result_Cur);
                 $idCurriculo = $rowCur[id_curriculo];
+                $docMatricula = $rowCur[doc_matricula];
 
                 if ($idCurriculo=="")
                 {
@@ -100,10 +105,11 @@ switch ($request_reference) {
                 $limit = $_REQUEST['rows'];
                 $sidx = $_REQUEST['sidx'];
                 $sord = $_REQUEST['sord'];
+                $idUsuario = $_SESSION['idUsuario'];
                
                 if(!$sidx) $sidx =1;
 
-                $result = pg_query("SELECT COUNT(*) AS count FROM ProjetosPesquisa WHERE (doc_matricula='12310488')");
+                $result = pg_query("SELECT COUNT(*) AS count FROM ProjetosPesquisa WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user=$idUsuario)");
                 $row = pg_fetch_array($result);
                 $count = $row['count'];
                 //echo $count;
@@ -119,7 +125,7 @@ switch ($request_reference) {
                 if($start <0) $start = 0;
 
 
-                $SQL = "SELECT id_projeto, descricao FROM ProjetosPesquisa WHERE (doc_matricula='12310488') ORDER BY id_projeto ";
+                $SQL = "SELECT id_projeto, descricao FROM ProjetosPesquisa WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user=$idUsuario) ORDER BY id_projeto ";
                 $result = pg_query( $SQL ) or die("A consulta aos projetos de pesquisa do docente não pode ser realizada.".pq_last_error());
                         
                 if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
@@ -146,5 +152,5 @@ switch ($request_reference) {
         }
 
 //Fecha conexão com o banco de dados
-pg_close($bd);
+pg_close();
 ?>

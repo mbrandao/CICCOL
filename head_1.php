@@ -13,17 +13,6 @@
         <script type="text/javascript" src="ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="ui/jquery.ui.widget.js"></script>
 
-
-        
-        <script type="text/javascript" src="ui/jquery.ui.mouse.js"></script>
-	<script type="text/javascript" src="ui/jquery.ui.button.js"></script>
-	<script type="text/javascript" src="ui/jquery.ui.draggable.js"></script>
-	<script type="text/javascript" src="ui/jquery.ui.position.js"></script>
-        <script type="text/javascript" src="ui/jquery.ui.dialog.js"></script>
-      
-        
-
-
         <script type="text/javascript" src="ui/jquery.ui.datepicker.js"></script>
         <script type="text/javascript" src="ui/i18n/jquery.ui.datepicker-pt-BR.js"></script>
    

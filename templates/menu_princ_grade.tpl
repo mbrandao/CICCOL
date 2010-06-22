@@ -7,9 +7,10 @@ jQuery("#list_grade_1").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -32,8 +33,7 @@ jQuery("#list_grade_1").jqGrid({
         var ids = $("#list_grade_1").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('1')\"  />";
-
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('1'); \"  />";
             $("#list_grade_1").setRowData(ids[i],{act:bv});
 
          }
@@ -48,9 +48,10 @@ jQuery("#list_grade_2").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -73,7 +74,7 @@ jQuery("#list_grade_2").jqGrid({
         var ids = $("#list_grade_2").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('2')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('2'); \"  />";
 
             $("#list_grade_2").setRowData(ids[i],{act:bv});
 
@@ -91,9 +92,10 @@ jQuery("#list_grade_3").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -116,7 +118,7 @@ jQuery("#list_grade_3").jqGrid({
         var ids = $("#list_grade_3").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('3')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('3'); \"  />";
 
             $("#list_grade_3").setRowData(ids[i],{act:bv});
 
@@ -134,9 +136,10 @@ jQuery("#list_grade_4").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -159,7 +162,7 @@ jQuery("#list_grade_4").jqGrid({
         var ids = $("#list_grade_4").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('4')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('4'); \"  />";
 
             $("#list_grade_4").setRowData(ids[i],{act:bv});
 
@@ -177,9 +180,10 @@ jQuery("#list_grade_5").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -202,7 +206,7 @@ jQuery("#list_grade_5").jqGrid({
         var ids = $("#list_grade_5").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('5')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('5'); \"  />";
 
             $("#list_grade_5").setRowData(ids[i],{act:bv});
 
@@ -220,9 +224,10 @@ jQuery("#list_grade_6").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -245,7 +250,7 @@ jQuery("#list_grade_6").jqGrid({
         var ids = $("#list_grade_6").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('6')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('6'); \"  />";
 
             $("#list_grade_6").setRowData(ids[i],{act:bv});
 
@@ -263,9 +268,10 @@ jQuery("#list_grade_7").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -288,7 +294,7 @@ jQuery("#list_grade_7").jqGrid({
         var ids = $("#list_grade_7").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('7')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('7'); \"  />";
 
             $("#list_grade_7").setRowData(ids[i],{act:bv});
 
@@ -305,9 +311,10 @@ jQuery("#list_grade_8").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -330,7 +337,7 @@ jQuery("#list_grade_8").jqGrid({
         var ids = $("#list_grade_8").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('8')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('8'); \"  />";
 
             $("#list_grade_8").setRowData(ids[i],{act:bv});
 
@@ -346,9 +353,10 @@ jQuery("#list_grade_optativa").jqGrid({
     width:520,
     height:190,
     datatype: "xml",
-    colNames:['Ementa', 'Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
+    colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
         {name:'act',index:'act', width:50, sortable:false},
+        {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
         {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
@@ -371,7 +379,7 @@ jQuery("#list_grade_optativa").jqGrid({
         var ids = $("#list_grade_optativa").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only' type='button' id='bt_ver_ementa' value='Ver' onclick=\" exibe('optativa')\"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('optativa'); \"  />";
 
             $("#list_grade_optativa").setRowData(ids[i],{act:bv});
 
@@ -411,42 +419,6 @@ jQuery("#list_grade_optativa").jqGrid({
 
     })
 
-// -------------------------------------EXIBIR A EMENTA DA DISCIPLINA--------------------------
-
-function exibe(num_semestre)
-{
-    var id = $("#list_grade_"+num_semestre).getGridParam('selrow');
-
-    if(id)
-    {
-
-        //Armazena os valores do formulário na variável dataString
-        var dataString = 'id_ementa=' + id;
-
-        var opcao = 'consulta_ementa';
-
-        //Envia a variável dataString para a lib que insere no banco de dados
-        $.ajax({
-                        type: "GET",
-                        url: "libs/lib_grade.php?reference=grade&action="+ opcao,
-                        processData: false,
-                        data: dataString,
-                        success: function(msg){
-                           alert(msg);
-
-                         }
-         });
-
-        //$dialog.dialog('option', 'title', 'Ementa');
-        //$dialog.dialog('open');
-    }
-    else
-        alert("Selecione uma linha!");
-
-
-}
-
-
 
  // -------------------------------------ABRE FORMULÁRIO PARA CADASTRO E EDIÇÃO--------------------------
    var $dialog = $('#form_ver_ementa').dialog({
@@ -456,6 +428,25 @@ function exibe(num_semestre)
         autoOpen: false
 
     });
+
+// -------------------------------------EXIBIR A EMENTA DA DISCIPLINA--------------------------
+
+function exibe(num_semestre)
+{
+    var id = $("#list_grade_"+num_semestre).getGridParam('selrow');
+
+    if(id)
+    {
+            $("#bt_ver_ementa").click(function(){
+                $("#list_grade_"+num_semestre).GridToForm(id,"#form_ver_ementa");
+            })
+
+    }
+    else
+        alert("Selecione uma linha!");
+
+
+}
 
 
 </script>
@@ -518,11 +509,10 @@ function exibe(num_semestre)
 </div>
 
 <!-- Formulário de cadastro e edição-->
-<div id="cad_adm" style="display:none;">
-    <form class="dialog-form" id="form_ver_ementa" style="background-color:white;" >
-           <p><!--{$ementa}--></p>
-    </form>
-</div>
+ <form class="dialog-form" id="form_ver_ementa" style="display:none; background-color: white;">
+        <textarea name="visualizar_ementa" cols="28" rows="10" class="text ui-widget-content ui-corner-all aux"></textarea>
+
+ </form>
 
 
 
