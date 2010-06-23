@@ -1,7 +1,9 @@
 <script type="text/javascript">
 
 // ------------------------------------Grid Grade---------------------------
+
 var lastsel;
+
 jQuery("#list_cad_grade").jqGrid({
     url:'libs/lib_cad_grade.php?reference=grade&action=grid_buscar_grade',
     width: 530,
@@ -25,7 +27,6 @@ jQuery("#list_cad_grade").jqGrid({
             lastsel=id;
         }
     },
-    //editurl: "local",
     caption: "Grade Acadêmica"
 });
 
@@ -102,33 +103,45 @@ jQuery("#list_cad_grade").jqGrid({
 
   $('#bt_ok_cad_grade').click(function(){
 
-            //Pega os valores do formulário
-            var dt_implantacao = $("#cad_grade_dt_implantacao").val();
-            var id_cad = $("#cad_grade_id").val();
+           var validaGrade = $("#form_cad_grade").valid();
+          
 
-            //Armazena os valores do formulário na variável dataString
-            var dataString = 'dt_implantacao=' + dt_implantacao + '&cad_id=' + id_cad;
+           if( validaGrade==true)
+           {
+
+                //Pega os valores do formulário
+                var dt_implantacao = $("#cad_grade_dt_implantacao").val();
+                var id_cad = $("#cad_grade_id").val();
+
+                //Armazena os valores do formulário na variável dataString
+                var dataString = 'dt_implantacao=' + dt_implantacao + '&cad_id=' + id_cad;
 
 
-            //Defique qual action será passada na url
-            if (id_cad=="")
-                var opcao= 'inserir_grade';
-            else
-                var opcao='update_grade';
+                //Defique qual action será passada na url
+                if (id_cad=="")
+                    var opcao= 'inserir_grade';
+                else
+                    var opcao='update_grade';
 
-            //Envia a variável dataString para a lib que insere no banco de dados
-            $.ajax({
-                    type: "GET",
-                    url: "libs/lib_cad_grade.php?reference=grade&action="+ opcao,
-                    processData: false,
-                    data: dataString,
-                    //dataType: "html",
-                    success: function(msg){
-                        alert(msg);
-                     $("#cad_adm").hide();
-                     $("#list_cad_grade").trigger("reloadGrid");
-                     }
-                });
+                //Envia a variável dataString para a lib que insere no banco de dados
+                $.ajax({
+                        type: "GET",
+                        url: "libs/lib_cad_grade.php?reference=grade&action="+ opcao,
+                        processData: false,
+                        data: dataString,
+                        //dataType: "html",
+                        success: function(msg){
+                             alert(msg);
+                             if(msg=="Cadastro realizado com sucesso")
+                             {
+                                 $("#cad_adm").hide();
+                                 $("#list_cad_grade").trigger("reloadGrid");
+                             }
+                             else
+                                 $("#cad_grade_dt_implantacao").val("");
+                         }
+                    });
+           }
 
     })
 
@@ -155,6 +168,65 @@ $(function() {
 /* Na máscara criada o 9 representa qualquer número de 0 a 9 */
 $("#cad_grade_dt_implantacao").mask("99/99/9999",{placeholder:" "});
 
+//--------------------------------------Método para Validação da Data---------------------------------------------------
+
+jQuery.validator.addMethod('dateBR', function(value, element) {
+
+    // verificando data
+    var data = value;
+
+    var dia = data.substr(0,2);
+    var mes = data.substr(3,2);
+    var ano = data.substr(6,4);
+
+    if(dia>31||mes>12)
+        return false;
+
+    if((mes==4||mes==6||mes==9||mes==11)&&dia==31)
+        return false;
+
+    if(mes==2 && (dia>29||(dia==29&&ano%4!=0)))
+        return false;
+
+    if(ano < 1970)
+        return false;
+
+    return true;
+
+}, "Informe uma data válida");
+
+
+//--------------------------------------Validação---------------------------------------------------
+var validator = $("#form_cad_grade").validate({
+
+        //Especificas os objetos das regras de validação
+        rules: {
+
+            cad_grade_dt_implantacao: {
+                required: true,
+                dateBR: true
+            }
+        },
+
+        messages: {
+            cad_grade_dt_implantacao: {
+                required: "Preencha a data de implantação"
+            }
+
+        },
+
+        errorElement: "span",
+
+        errorPlacement: function(error, element) {
+               error.insertAfter(element)
+        },
+
+       // Especifica o funcionamento do formulário quando a validação passar com sucesso
+        submitHandler: function() {
+            alert("submitted!");
+        }
+
+    });
 
 </script>
 

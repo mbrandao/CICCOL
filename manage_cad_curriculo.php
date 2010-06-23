@@ -38,15 +38,17 @@ while ($row_ult_emprego = pg_fetch_array($SQL)){
 $smarty->assign('ultEmprego',$ultEmprego);
 
 //Pega o id do currículo do professor cadastrado no banco
-$SQL = pg_query("SELECT  id_curriculo, dt_criacao FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE (id_user='$idUsuario'))") or die("Couldn t execute query".pg_last_error());
+$SQL = pg_query("SELECT  id_curriculo, dt_criacao, lattes FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE (id_user='$idUsuario'))") or die("Couldn t execute query".pg_last_error());
 
 while ($row_id = pg_fetch_array($SQL)){
      $idCurriculo = $row_id["id_curriculo"];
      $dtCriacao = $row_id["dt_criacao"];
+     $lattes = $row_id["lattes"];
 }
 
 $smarty->assign('dtCriacao', $dtCriacao);
 $smarty->assign('idCurriculo',$idCurriculo);
+$smarty->assign('curLattes',$lattes);
 
 $SQL = pg_query("SELECT descricao FROM cargo WHERE id_cargo IN (SELECT id_cargo_atual FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE (id_user='$idUsuario')))");
 while ($row = pg_fetch_array($SQL)){

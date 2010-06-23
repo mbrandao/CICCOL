@@ -60,14 +60,13 @@ ALTER TABLE DisciplinaHorario            	ADD FOREIGN KEY (dia_semana, hora_inic
 ALTER TABLE DisciplinaEmail              	ADD FOREIGN KEY (cod_disciplina, nome, turma)          				   REFERENCES Disciplina(cod_disciplina, nome, turma)		ON DELETE CASCADE     ON UPDATE CASCADE;
 ALTER TABLE DisciplinaEmail              	ADD FOREIGN KEY (id)        							   REFERENCES Email(id)						ON DELETE CASCADE     ON UPDATE CASCADE;
 
-ALTER TABLE DisciplinaFluxograma         	ADD FOREIGN KEY (cod_disciplina, nome, turma)        				   REFERENCES Disciplina(cod_disciplina, nome, turma)		ON DELETE CASCADE     ON UPDATE CASCADE;
-ALTER TABLE DisciplinaFluxograma         	ADD FOREIGN KEY (id_fluxograma)        					           REFERENCES Fluxograma(id_fluxograma)			        ON DELETE CASCADE     ON UPDATE CASCADE;
-
 ALTER TABLE DisciplinaGradeCurricular   	ADD FOREIGN KEY (cod_disciplina, nome, turma)        				   REFERENCES Disciplina(cod_disciplina, nome, turma)		ON DELETE CASCADE     ON UPDATE CASCADE;
 ALTER TABLE DisciplinaGradeCurricular    	ADD FOREIGN KEY (id_grade)        						   REFERENCES GradeCurricular(id_grade)				ON DELETE CASCADE     ON UPDATE CASCADE;
 
 ALTER TABLE DisciplinaRequisitaDisciplina	ADD FOREIGN KEY (cod_disciplina, nome, turma)        				   REFERENCES Disciplina(cod_disciplina, nome, turma)		ON DELETE CASCADE     ON UPDATE CASCADE;
 ALTER TABLE DisciplinaRequisitaDisciplina	ADD FOREIGN KEY (requisito_cod_disciplina, requisito_nome, requisito_turma)        REFERENCES Disciplina(cod_disciplina, nome, turma)		ON DELETE CASCADE     ON UPDATE CASCADE;
+ALTER TABLE DisciplinaRequisitaDisciplina	ADD FOREIGN KEY (id_grade)        REFERENCES GradeCurricular(id_grade)		ON DELETE CASCADE     ON UPDATE CASCADE;
+
 
 ALTER TABLE DisciplinaSms             	        ADD FOREIGN KEY (cod_disciplina, nome, turma)        				   REFERENCES Disciplina(cod_disciplina, nome, turma)		ON DELETE CASCADE     ON UPDATE CASCADE;
 ALTER TABLE DisciplinaSms              	        ADD FOREIGN KEY (id)        							   REFERENCES Sms(id)						ON DELETE CASCADE     ON UPDATE CASCADE;

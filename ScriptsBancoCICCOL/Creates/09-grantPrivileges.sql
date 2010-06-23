@@ -25,7 +25,6 @@ GRANT SELECT ON Curriculo				TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON Disciplina		        TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON DisciplinaHorario		TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON DisciplinaEmail			TO GROUP administrador, moderador;
-GRANT ALL PRIVILEGES ON DisciplinaFluxograma		TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON DisciplinaGradeCurricular	TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON DisciplinaRequisitaDisciplina	TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON DisciplinaSms			TO GROUP administrador, moderador;
@@ -34,7 +33,6 @@ GRANT ALL PRIVILEGES ON Docente				TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON Email				TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON Ementa				TO GROUP administrador, moderador;
 
-GRANT ALL PRIVILEGES ON Fluxograma			TO GROUP administrador, moderador;
 GRANT ALL PRIVILEGES ON Foto				TO GROUP administrador, moderador;
 
 GRANT ALL PRIVILEGES ON GradeCurricular			TO GROUP administrador, moderador;

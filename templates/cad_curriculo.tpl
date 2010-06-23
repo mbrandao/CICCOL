@@ -1,5 +1,6 @@
 <script type="text/javascript" charset="ISO-8859-1">
-    //-------------------------------------------- Ação sobre o botão OK --------------------------------------
+
+//-------------------------------------------- Ação sobre o botão OK --------------------------------------
 
   $('#bt_ok_cad_curriculo').click(function(){
 
@@ -9,6 +10,7 @@
             var cargo = $("#cad_curriculo_cargo").val();
             var id_curriculo = $("#cad_curriculo_id").val();
             var dt_criacao = $("#cad_cur_dt_criacao").val();
+            var lattes = $("#cad_curriculo_lattes").val();
 
             var interesse = [];
 
@@ -19,7 +21,7 @@
        
 
             //Armazena os valores do formulário na variável dataString
-           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse + '&dt_criacao='+dt_criacao;
+           var dataString = 'perfil_profissional=' + perfil_profissional + '&ultimo_emprego=' + ultimo_emprego + '&cargo=' + cargo + '&id_curriculo=' + id_curriculo + '&interesse=' + interesse + '&dt_criacao=' + dt_criacao + '&lattes='+lattes;
 
 
             //Defique qual action será passada na url
@@ -81,6 +83,7 @@ $('#bt_limpar_cad_curriculo').click(function(){
                        $("#cad_curriculo_cargo").val("");
                        $("#cad_curriculo_id").val("");
                        $("#cad_cur_dt_criacao").val("");
+                       $("#cad_curriculo_lattes").val("");
 
                     }
              });
@@ -142,8 +145,10 @@ $('#remove').click(function() {
 
                             <td align="center"><a href="#" id="remove"><input type="button" value="&lt;&lt; SUB" id="remove" title="OK" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"></a></td>
                         </tr>
-                    </table>
+                    </table><br/>
 
+                    <label>Link para o Lattes</label>
+                    <input type="text" id="cad_curriculo_lattes" name="cad_curriculo_lattes" value="<!--{$curLattes}-->"  class="text ui-widget-content ui-corner-all" size="35"/><br/>
 
                     <input type="text" id="cad_curriculo_id" name="cad_curriculo_id" value="<!--{$idCurriculo}-->" style="display:none;" /><br/>
                     <input type="text" size="10" name="cad_cur_dt_criacao" id="cad_cur_dt_criacao" value="<!--{$dtCriacao}-->" style="display:none;" /><br/>

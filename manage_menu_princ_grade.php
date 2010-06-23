@@ -17,15 +17,36 @@ $smarty->compile_check = true;
 $smarty->debugging = false;
 
 
-//Pega a lista de disciplinas cadastradas no banco
-$SQL = pg_query("SELECT id_grade FROM GradeCurricular ORDER BY dt_implantacao") or die("Couldn t execute query".pg_last_error());
+//Pega a lista as grades cadastradas no banco
+$SQL = pg_query("SELECT id_grade, FuncFormataData(dt_implantacao) AS data FROM GradeCurricular ORDER BY dt_implantacao DESC") or die("Couldn t execute query".pg_last_error());
 
-while ($row_grade = pg_fetch_array($SQL)){
-     $grade[] = array("id_grade"=>$row_grade["id_grade"]);
+$aux = 0;
+
+while ($row = pg_fetch_array($SQL)){
+
+    /* Montar o ano de início e término da Grade Acadêmica */
+    if ($aux == 0)
+    {
+        $periodo = '';
+        $year = substr($row["data"], 6, 4);
+    }
+    else
+    {
+        $periodo = " - ".($year-1);
+        $year = substr($row["data"], 6, 4);
+    }
+
+    $idGrade[] = array("id"=>$row["id_grade"]);
+
+    $intervalo = $year.$periodo;
+
+     $grade[$aux] = $intervalo;
+     $aux = $aux + 1;
 }
 
 
 $smarty->assign('grade', $grade);
+$smarty->assign('idGrade', $idGrade);
 
 $smarty->display('menu_princ_grade.tpl');
 

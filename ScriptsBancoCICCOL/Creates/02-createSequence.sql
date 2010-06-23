@@ -17,7 +17,6 @@ CREATE SEQUENCE seq_id_solicitar_cadast_sis     	CACHE 1;
 CREATE SEQUENCE seq_id_telefone				CACHE 1;
 CREATE SEQUENCE seq_id_user				CACHE 1;
 CREATE SEQUENCE seq_id_sala				CACHE 1;
-CREATE SEQUENCE seq_id_fluxograma       		CACHE 1;
 CREATE SEQUENCE seq_id_grade				CACHE 1;
 CREATE SEQUENCE seq_id_disciplina			CACHE 1;
 CREATE SEQUENCE seq_id_disciplinahorario		CACHE 1;

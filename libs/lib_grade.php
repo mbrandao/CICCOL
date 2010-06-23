@@ -19,9 +19,8 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
+                $idGrade = $request_id_grade;
 
-                //echo gettype($idGrade);
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -38,7 +37,7 @@ switch ($request_reference)
 
 
 
-                $SQL = "SELECT D.id_disciplina AS id_disciplina, M.nome AS nome_materia, D.nome AS nome_disciplina, carga_horaria, num_cred FROM materia M JOIN Disciplina D ON M.id_materia=D.id_materia WHERE (semestre='1' AND optativa='1' AND D.nome IN (SELECT nome FROM DisciplinaGradeCurricular WHERE id_grade = '$idGrade')) ORDER BY M.nome";
+                $SQL = "SELECT D.descricao AS ementa, D.id_disciplina AS id_disciplina, M.nome AS nome_materia, D.nome AS nome_disciplina, carga_horaria, num_cred FROM materia M JOIN (Disciplina NATURAL JOIN EMENTA ) AS D ON M.id_materia=D.id_materia WHERE (semestre='1' AND optativa='1' AND (D.nome, D.turma) IN (SELECT nome, turma FROM DisciplinaGradeCurricular WHERE id_grade = '$idGrade')) ORDER BY M.nome";
                 $result = pg_query( $SQL ) or die("A consulta não pode ser realizada.".pq_last_error());
 
                 if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
@@ -52,13 +51,9 @@ switch ($request_reference)
 
                 while($row = pg_fetch_array($result))
                 {
-                        $SQLEmenta = pg_query("SELECT descricao FROM Ementa WHERE id_ementa IN (SELECT id_ementa FROM Disciplina WHERE id_disciplina='$row[id_disciplina]')");
-                        $row_aux = pg_fetch_array($SQLEmenta);
-                        $Ementa = $row_aux['descricao'];
-
                         echo "<row id='". $row[id_disciplina]."'>";
                         echo "<cell>".""."</cell>";
-                        echo "<cell>". $row_aux[descricao]."</cell>";
+                        echo "<cell>". $row[ementa]."</cell>";
                         echo "<cell>". $row[nome_materia]."</cell>";
                         echo "<cell>". $row[nome_disciplina]."</cell>";
                         echo "<cell>". $row[carga_horaria]."</cell>";
@@ -95,9 +90,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -172,9 +165,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -189,7 +180,7 @@ switch ($request_reference)
                 $count = $row['count'];
 
 
-                $SQL = "SELECT D.id_disciplina AS id_disciplina, M.nome AS nome_materia, D.nome AS nome_disciplina, carga_horaria, num_cred FROM materia M JOIN Disciplina D ON M.id_materia=D.id_materia WHERE (semestre='3' AND optativa='1' AND D.nome IN (SELECT nome FROM DisciplinaGradeCurricular WHERE id_grade = '$idGrade')) ORDER BY M.nome";
+                $SQL = "SELECT D.id_disciplina AS id_disciplina, M.nome AS nome_materia, D.nome AS nome_disciplina, carga_horaria, num_cred FROM materia M JOIN Disciplina D ON M.id_materia=D.id_materia WHERE (semestre='3' AND optativa='1' AND (D.nome, D.turma) IN (SELECT nome, turma FROM DisciplinaGradeCurricular WHERE id_grade = '$idGrade')) ORDER BY M.nome";
                 $result = pg_query( $SQL ) or die("Couldn t execute query.".pq_last_error());
 
                 if ( stristr($_SERVER["HTTP_ACCEPT"],"application/xhtml+xml") ) {
@@ -249,9 +240,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -325,9 +314,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -399,9 +386,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -476,9 +461,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -553,9 +536,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")
@@ -630,9 +611,7 @@ switch ($request_reference)
                 //Recebe as variáveis do datastring
                 $request_id_grade = trim(($_REQUEST['id_grade']));
 
-                $idGrade = $request_id_grade{strlen($request_id_grade)-1};
-
-                //echo gettype($idGrade);
+                $idGrade = $request_id_grade;
 
                 /* Se nenhuma grade foi selecionada, mostra as disciplinas da grade mais atual  */
                 if ($idGrade == "")

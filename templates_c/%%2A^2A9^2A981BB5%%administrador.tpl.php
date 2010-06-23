@@ -1,7 +1,5 @@
-<?php /* Smarty version 2.6.26, created on 2010-06-17 10:32:41
+<?php /* Smarty version 2.6.26, created on 2010-06-22 22:54:49
          compiled from administrador.tpl */ ?>
-
-
 
 <script type="text/javascript">
 
@@ -84,8 +82,8 @@ $(function() {
 
             <h3>Email</h3>
                 <ul>
-                    <li id="email_enviar"><a href="#">Enviar Email</a></li>
-                    <li id="email_historico"><a href="#">Histórico</a></li>
+                    <li id="admmod_email_enviar"><a href="#">Enviar Email</a></li>
+                    <li id="admmod_email_historico"><a href="#">Histórico</a></li>
                 </ul>
 
 

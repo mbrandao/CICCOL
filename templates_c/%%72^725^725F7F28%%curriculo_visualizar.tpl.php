@@ -1,12 +1,13 @@
-<?php /* Smarty version 2.6.26, created on 2010-06-15 23:23:55
+<?php /* Smarty version 2.6.26, created on 2010-06-22 22:57:31
          compiled from curriculo_visualizar.tpl */ ?>
 <script type="text/javascript">
 
 // ------------------------------------Grid Projeto---------------------------
 var lastsel;
+
 jQuery("#list_cad_projeto").jqGrid({
     url:'libs/lib_projeto.php?reference=projeto&action=grid_buscar_projeto',
-    width: 400,
+    width: 430,
     height:150,
     datatype: "xml",
     colNames:['Descrição'],
@@ -44,27 +45,33 @@ jQuery("#list_cad_projeto").jqGrid({
 </legend>
                     <br/>
 
-                    <label>Perfil Profissional</label>
-                    <textarea readonly="readonly" class="text ui-widget-content ui-corner-all" cols="35" rows="6"><?php echo $this->_tpl_vars['perfil']; ?>
-</textarea><br/><br/>
+                    <label>Perfil Profissional</label><br/>
+                    <p><?php echo $this->_tpl_vars['perfil']; ?>
+</p><br/><br/>
 
-                    <label>Último Emprego</label>
-                    <textarea readonly="readonly" class="text ui-widget-content ui-corner-all" cols="35" rows="3"><?php echo $this->_tpl_vars['ultEmprego']; ?>
-</textarea><br/><br/>
+                    <label>Último Emprego</label><br/>
+                    <p><?php echo $this->_tpl_vars['ultEmprego']; ?>
+</p><br/><br/>
 
-                    <label>Cargo Atual</label>
-                    <input readonly="readonly" class="text ui-widget-content ui-corner-all" value="<?php echo $this->_tpl_vars['cargo']; ?>
-"/><br/><br/>
+                    <label>Cargo Atual</label><br/>
+                    <p><?php echo $this->_tpl_vars['cargo']; ?>
+</p><br/><br/>
 
-                    <label>Áreas de Interesse</label>
-                    <textarea readonly="readonly" class="text ui-widget-content ui-corner-all" cols="35" rows="2"><?php echo $this->_tpl_vars['interesse']; ?>
-</textarea>
+                    <label>Áreas de Interesse</label><br/>
+                    <p><?php echo $this->_tpl_vars['interesse']; ?>
+</p><br><br/>
+
+                    <label>Link para o Currículo Lattes</label><br/>
+                    <p><a href="<?php echo $this->_tpl_vars['curLattes']; ?>
+" target="_blank"><?php echo $this->_tpl_vars['curLattes']; ?>
+</a></p>
                     <br/><br/><br/>
                     
                     <div id="form_grid_projeto">
                         <table id="list_cad_projeto" style="float: right" class="scroll" cellpadding="0" cellspacing="0"> </table>
                         <div id="pager_cad_projeto" class="scroll" style="text-align:center;"></div>
                     </div>
+                    
                     <br/>
          </fieldset>
     </form>

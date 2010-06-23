@@ -55,7 +55,7 @@ jQuery("#list_cad_cargo").jqGrid({
        //Pega o id e armazena em gsr
        var gsr = $("#list_cad_cargo").getGridParam('selrow');
        $("#cad_cargo_id").val(gsr);
-       
+
        if(gsr){
 
            //Abre formulário
@@ -80,7 +80,7 @@ jQuery("#list_cad_cargo").jqGrid({
         //Pega o id e armazena em gsr
         var gsr = $("#list_cad_cargo").getGridParam('selrow');
         var dataString = 'cad_id='+ gsr;
-        
+
         //Envia o id correspondente a linha que será apagada no banco
         if(gsr){
             $.ajax({
@@ -100,6 +100,12 @@ jQuery("#list_cad_cargo").jqGrid({
 //-------------------------------------------- Ação sobre o botão OK --------------------------------------
 
   $('#bt_ok_cad_cargo').click(function(){
+
+           var validaCargo = $("#form_cad_cargo").valid();
+
+
+           if(validaCargo==true){
+
 
             //Pega os valores do formulário
             var descricao = $("#cad_cargo_descricao").val();
@@ -127,8 +133,10 @@ jQuery("#list_cad_cargo").jqGrid({
                      $("#list_cad_cargo").trigger("reloadGrid");
                      }
                 });
+           }
 
     })
+
 
 //------------------------------------ Ação sobre o botão Cancelar ----------------------
 
@@ -137,6 +145,42 @@ $('#bt_cancelar_cad_cargo').click(function(){
     $("#cad_adm").hide();
 
 })
+
+
+
+var validator = $("#form_cad_cargo").validate({
+
+        rules: {
+
+            cad_cargo_descricao: {
+                required: true
+            }
+        },
+
+        messages: {
+            cad_cargo_descricao: {
+                required: "Preencha o cargo"
+            }
+
+        },
+
+        errorElement: "span",
+
+        errorPlacement: function(error, element) {
+
+               error.insertAfter(element)
+
+
+        },
+
+       // specifying a submitHandler prevents the default submit, good for the demo
+        submitHandler: function() {
+            alert("submitted!");
+        }
+
+    });
+
+
 
 
 </script>
@@ -175,10 +219,15 @@ $('#bt_cancelar_cad_cargo').click(function(){
         <fieldset class="ui-widget ui-widget-content ui-corner-all">
 		<legend class="ui-widget ui-widget-header ui-corner-all">Cargo</legend>
 
-                    <label>Nome</label>
-                    <input type="text" size="30" name="cad_cargo_descricao" id="cad_cargo_descricao" class="text ui-widget-content ui-corner-all" /><br/>
+                    <label for="nome">Nome</label>
+                    <input type="text" size="30" name="cad_cargo_descricao" id="cad_cargo_descricao" class="text ui-widget-content ui-corner-all" />
+
                     <input type="text" id="cad_cargo_id" name="cad_cargo_id" style="display:none;">
 
+
+
+
+<br/><br/>
                     <div id="dialog-form_button"
                         <input type="button" value="OK" id="bt_ok_cad_cargo" title="OK" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
                         <input type="button" value="Cancelar" id="bt_cancelar_cad_cargo" title="Cancelar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">

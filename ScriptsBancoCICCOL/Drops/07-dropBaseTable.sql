@@ -21,7 +21,6 @@ DROP TABLE Curriculo				CASCADE;
 DROP TABLE Disciplina				CASCADE;
 DROP TABLE DisciplinaHorario			CASCADE;
 DROP TABLE DisciplinaEmail			CASCADE;
-DROP TABLE DisciplinaFluxograma			CASCADE;
 DROP TABLE DisciplinaGradeCurricular		CASCADE;
 DROP TABLE DisciplinaRequisitaDisciplina	CASCADE;
 DROP TABLE DisciplinaSms			CASCADE;
@@ -30,7 +29,6 @@ DROP TABLE Docente				CASCADE;
 DROP TABLE Email				CASCADE;
 DROP TABLE Ementa				CASCADE;
 
-DROP TABLE Fluxograma				CASCADE;
 DROP TABLE Foto					CASCADE;
 
 DROP TABLE GradeCurricular			CASCADE;

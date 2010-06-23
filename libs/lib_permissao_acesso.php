@@ -48,13 +48,13 @@ $saida = pg_fetch_array($consulta);
         }
 
        if($id_user){
-    
+
         $atualiza_email = pg_query("UPDATE usuario SET email= '$email' WHERE id_user = '$id_user'") or die ("Erro!".pg_last_error());
         $preenche_dados = pg_query("UPDATE autenticacao SET senha = '$senha' WHERE id_user = '$id_user' ") or die("   >> Erro   ".pg_last_error());
         $retorno =  1;
         echo $retorno;
-        
-       
+
+
         // AQUI VAI ENTRAR O ENVIO DE EMAIL
           $assunto = "Assistência de senha do CICCOL";
 	  $mensagem = "<html>";
@@ -74,5 +74,5 @@ $saida = pg_fetch_array($consulta);
           mail($email, $assunto, $mensagem, $headers);
 
         }
-     
+
 ?>

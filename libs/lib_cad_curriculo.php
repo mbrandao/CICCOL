@@ -24,6 +24,7 @@ switch ($request_reference)
                 $request_cargo = trim($_REQUEST['cargo']);
                 $request_id_curriculo = trim($_REQUEST['id_curriculo']);
                 $request_interesse = trim($_REQUEST['interesse']);
+                $request_lattes = trim($_REQUEST['lattes']);
                 $idUsuario = $_SESSION['idUsuario'];
 
 
@@ -55,7 +56,7 @@ switch ($request_reference)
                 if($idCargo=="")
                 {
                     //Insere no banco
-                    $SQL = ("INSERT INTO Curriculo (ultimo_emprego, perfil_profissional, doc_matricula, id_cargo_atual, dt_criacao) VALUES ('$request_ultimo_emprego', '$request_perfil_profissional', '$doc_matricula', NULL, '$dtCriacao')");
+                    $SQL = ("INSERT INTO Curriculo (ultimo_emprego, perfil_profissional, doc_matricula, id_cargo_atual, dt_criacao, lattes) VALUES ('$request_ultimo_emprego', '$request_perfil_profissional', '$doc_matricula', NULL, '$dtCriacao', '$request_lattes')");
 
                     //Verifica se foi inserido com sucesso
                     $result = pg_query( $SQL ) or die("Não foi possível cadastrar currículo".pg_last_error());
@@ -65,7 +66,7 @@ switch ($request_reference)
                 else
                 {
                     //Insere no banco
-                    $SQL = ("INSERT INTO Curriculo (ultimo_emprego, perfil_profissional, doc_matricula, id_cargo_atual, dt_criacao) VALUES ('$request_ultimo_emprego', '$request_perfil_profissional', '$doc_matricula', '$idCargo', '$dtCriacao')");
+                    $SQL = ("INSERT INTO Curriculo (ultimo_emprego, perfil_profissional, doc_matricula, id_cargo_atual, dt_criacao, lattes) VALUES ('$request_ultimo_emprego', '$request_perfil_profissional', '$doc_matricula', '$idCargo', '$dtCriacao', '$request_lattes')");
 
                     //Verifica se foi inserido com sucesso
                     $result = pg_query( $SQL ) or die("Não foi possível cadastrar currículo".pg_last_error());
@@ -114,6 +115,7 @@ switch ($request_reference)
                 $request_id_curriculo = trim($_REQUEST['id_curriculo']);
                 $request_interesse = trim($_REQUEST['interesse']);
                 $request_dtCriacao = trim($_REQUEST['dt_criacao']);
+                $request_lattes = trim($_REQUEST['lattes']);
                 $idUsuario = $_SESSION['idUsuario'];
 
                 $idInteresse = array();
@@ -191,7 +193,7 @@ switch ($request_reference)
                   if($idCargo=="")
                   {
                       //Atualiza no banco
-                      $SQL = ("UPDATE Curriculo SET dt_criacao = '$dtCriacao', perfil_profissional = '$request_perfil_profissional', ultimo_emprego = '$request_ultimo_emprego', id_cargo_atual = NULL, doc_matricula = '$doc_matricula' WHERE (id_curriculo = '$request_id_curriculo')");
+                      $SQL = ("UPDATE Curriculo SET lattes = '$request_lattes', dt_criacao = '$dtCriacao', perfil_profissional = '$request_perfil_profissional', ultimo_emprego = '$request_ultimo_emprego', id_cargo_atual = NULL, doc_matricula = '$doc_matricula' WHERE (id_curriculo = '$request_id_curriculo')");
 
                       //Verifica se foi atualizado com sucesso
                       $result = pg_query( $SQL ) or die("Erro na atualização dos dados.".pg_last_error());
@@ -201,7 +203,7 @@ switch ($request_reference)
                   else
                   {
                       //Atualiza no banco
-                      $SQL = ("UPDATE Curriculo SET dt_criacao = '$dtCriacao', perfil_profissional = '$request_perfil_profissional', ultimo_emprego = '$request_ultimo_emprego', id_cargo_atual = '$idCargo', doc_matricula = '$doc_matricula' WHERE (id_curriculo = '$request_id_curriculo')");
+                      $SQL = ("UPDATE Curriculo SET lattes = '$request_lattes', dt_criacao = '$dtCriacao', perfil_profissional = '$request_perfil_profissional', ultimo_emprego = '$request_ultimo_emprego', id_cargo_atual = '$idCargo', doc_matricula = '$doc_matricula' WHERE (id_curriculo = '$request_id_curriculo')");
 
                       //Verifica se foi inserido com sucesso
                       $result = pg_query( $SQL ) or die("Couldn t execute query".pg_last_error());

@@ -17,6 +17,7 @@ $smarty->right_delimiter = '}-->';
 $smarty->compile_check = true;
 $smarty->debugging = false;
 
+
 $idUsuario = $_SESSION['idUsuario'];
 
 /* Faz uma consulta ao banco para pegar o nome e sobrenome do docente */
@@ -38,13 +39,15 @@ while ($row_perfil = pg_fetch_array($SQL)){
 $smarty->assign('perfil',$perfil);
 
 //Pega o último emprego do currículo do professor cadastrado no banco
-$SQL = pg_query("SELECT  ultimo_emprego, id_curriculo FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user='$idUsuario')") or die("A consulta não pode ser realizada!".pg_last_error());
+$SQL = pg_query("SELECT  ultimo_emprego, lattes FROM Curriculo WHERE doc_matricula IN (SELECT identificador FROM Autenticacao WHERE id_user='$idUsuario')") or die("A consulta não pode ser realizada!".pg_last_error());
 
-while ($row_ult_emprego = pg_fetch_array($SQL)){
-     $ultEmprego = $row_ult_emprego["ultimo_emprego"];
+while ($row = pg_fetch_array($SQL)){
+     $ultEmprego = $row["ultimo_emprego"];
+     $lattes = $row["lattes"];
 }
 
 $smarty->assign('ultEmprego',$ultEmprego);
+$smarty->assign('curLattes',$lattes);
 
 
 /* Faz uma consulta ao banco para pegar o cargo do docente */

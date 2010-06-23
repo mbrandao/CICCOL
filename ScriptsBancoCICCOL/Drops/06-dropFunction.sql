@@ -23,6 +23,8 @@ DROP FUNCTION FuncFormataData(TIMESTAMP)				            	 CASCADE;
 
 DROP FUNCTION calcIdade(TIMESTAMP)							 CASCADE;
 
+DROP FUNCTION sem_acentos(VARCHAR) 							 CASCADE;
+
 
 /* Drop dos tipos criados para as funções */
 

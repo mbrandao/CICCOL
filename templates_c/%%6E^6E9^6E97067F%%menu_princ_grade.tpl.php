@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2010-06-16 10:17:32
+<?php /* Smarty version 2.6.26, created on 2010-06-22 22:35:44
          compiled from menu_princ_grade.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'cat', 'menu_princ_grade.tpl', 464, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'cat', 'menu_princ_grade.tpl', 434, false),)), $this); ?>
 <script type="text/javascript" charset="ISO-8859-1">
 
 var lastsel;
@@ -13,12 +13,12 @@ jQuery("#list_grade_1").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -37,12 +37,10 @@ jQuery("#list_grade_1").jqGrid({
         var ids = $("#list_grade_1").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('1'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('1','"+cl+"'); \"  />";
             $("#list_grade_1").setRowData(ids[i],{act:bv});
-
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "1º Semestre"
 
 });
@@ -54,12 +52,12 @@ jQuery("#list_grade_2").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -78,13 +76,12 @@ jQuery("#list_grade_2").jqGrid({
         var ids = $("#list_grade_2").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('2'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('2','"+cl+"'); \"  />";
 
             $("#list_grade_2").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "2º Semestre"
 
 });
@@ -98,12 +95,12 @@ jQuery("#list_grade_3").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -122,13 +119,12 @@ jQuery("#list_grade_3").jqGrid({
         var ids = $("#list_grade_3").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('3'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('3','"+cl+"'); \"  />";
 
             $("#list_grade_3").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "3º Semestre"
 
 });
@@ -142,12 +138,12 @@ jQuery("#list_grade_4").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -166,13 +162,12 @@ jQuery("#list_grade_4").jqGrid({
         var ids = $("#list_grade_4").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('4'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('4','"+cl+"'); \"  />";
 
             $("#list_grade_4").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "4º Semestre"
 
 });
@@ -186,12 +181,12 @@ jQuery("#list_grade_5").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -210,13 +205,12 @@ jQuery("#list_grade_5").jqGrid({
         var ids = $("#list_grade_5").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('5'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('5','"+cl+"'); \"  />";
 
             $("#list_grade_5").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "5º Semestre"
 
 });
@@ -230,12 +224,12 @@ jQuery("#list_grade_6").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -254,13 +248,12 @@ jQuery("#list_grade_6").jqGrid({
         var ids = $("#list_grade_6").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('6'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('6','"+cl+"'); \"  />";
 
             $("#list_grade_6").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "6º Semestre"
 
 });
@@ -274,12 +267,12 @@ jQuery("#list_grade_7").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -298,13 +291,12 @@ jQuery("#list_grade_7").jqGrid({
         var ids = $("#list_grade_7").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('7'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('7','"+cl+"'); \"  />";
 
             $("#list_grade_7").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "7º Semestre"
 
 });
@@ -317,12 +309,12 @@ jQuery("#list_grade_8").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -341,13 +333,12 @@ jQuery("#list_grade_8").jqGrid({
         var ids = $("#list_grade_8").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('8'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('8','"+cl+"'); \"  />";
 
             $("#list_grade_8").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "8º Semestre"
 
 });
@@ -359,12 +350,12 @@ jQuery("#list_grade_optativa").jqGrid({
     datatype: "xml",
     colNames:['Ementa', 'VerEmenta','Matéria', 'Disciplina', 'Carga Horária', 'Créditos', 'Pré-Requisito'],
     colModel:[
-        {name:'act',index:'act', width:50, sortable:false},
+        {name:'act',index:'act', width:60, sortable:false},
         {name:'visualizar_ementa',index:'visualizar_ementa', width:50,align:"center", hidden:true},
         {name:'materia',index:'materia', width:200,align:"center"},
         {name:'disciplina',index:'disciplina', width:200, align:"center"},
-        {name:'carhoraria',index:'carhoraria', width:85,align:"center"},
-        {name:'creditos',index:'creditos', width:50, align:"center"},
+        {name:'carhoraria',index:'carhoraria', width:100,align:"center"},
+        {name:'creditos',index:'creditos', width:65, align:"center"},
         {name:'prerequisito',index:'prerequisito', width:300,align:"center"},
     ],
     rowNum:7,
@@ -383,13 +374,12 @@ jQuery("#list_grade_optativa").jqGrid({
         var ids = $("#list_grade_optativa").getDataIDs();
         for(var i=0;i < ids.length;i++){
             var cl = ids[i];
-            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Nome da disciplina'); $dialog.dialog('open'); exibe('optativa'); \"  />";
+            bv = "<input style='height:22px;width:32px;' type='button' id='bt_ver_ementa' value='Ver' onclick=\"$dialog.dialog('option', 'title', 'Ementa'); $dialog.dialog('open'); exibe('optativa','"+cl+"'); \"  />";
 
             $("#list_grade_optativa").setRowData(ids[i],{act:bv});
 
          }
     },
-    //editurl: 'libs/lib_grade.php?reference=grade&action=grid_buscar_grade1',
     caption: "Disciplinas Optativas"
 
 });
@@ -400,31 +390,21 @@ jQuery("#list_grade_optativa").jqGrid({
   $('#bt_ok_busca_grade').click(function(){
 
             //Pega os valores do formulário
-            id_grade = $("#buscar_id_grade").val();
-            //alert(id_grade);
-
-            //Armazena os valores do formulário na variável dataString
-            var dataString = 'id_grade=' + id_grade;
-
-            var opcao= 'grid_buscar_grade1';
-
-            //Envia a variável dataString para a lib que insere no banco de dados
-            $.ajax({
-                    type: "GET",
-                    url: "libs/lib_grade.php?reference=grade&action="+ opcao,
-                    processData: false,
-                    data: dataString,
-                    //dataType: "html",
-                    success: function(){
-                     //$("#cad_adm").hide();
-                        $("#list_grade_1").trigger("reloadGrid");
-                    }
-                });
-
-    })
+            var id_grade = $("#buscar_id_grade").val();
+            var num_semestre = 8;
+            
+            for(var i=1; i<=num_semestre; i++)
+             {
+                 $("#list_grade_"+i).setGridParam({
+                    url: "libs/lib_grade.php?reference=grade&action=grid_buscar_grade"+i+"&id_grade="+id_grade}).trigger("reloadGrid");
+             }
+            
+             $("#list_grade_optativa").setGridParam({
+                    url: "libs/lib_grade.php?reference=grade&action=grid_buscar_grade_optativa&id_grade="+id_grade}).trigger("reloadGrid");
+})
 
 
- // -------------------------------------ABRE FORMULÁRIO PARA CADASTRO E EDIÇÃO--------------------------
+// -------------------------------------ABRE FORMULÁRIO PARA CADASTRO E EDIÇÃO--------------------------
    var $dialog = $('#form_ver_ementa').dialog({
         width:350,
         height:260,
@@ -435,21 +415,11 @@ jQuery("#list_grade_optativa").jqGrid({
 
 // -------------------------------------EXIBIR A EMENTA DA DISCIPLINA--------------------------
 
-function exibe(num_semestre)
+function exibe(num_semestre, id)
 {
-    var id = $("#list_grade_"+num_semestre).getGridParam('selrow');
-
-    if(id)
-    {
-            $("#bt_ver_ementa").click(function(){
-                $("#list_grade_"+num_semestre).GridToForm(id,"#form_ver_ementa");
-            })
-
-    }
-    else
-        alert("Selecione uma linha!");
-
-
+    $("#bt_ver_ementa").click(function(){
+         $("#list_grade_"+num_semestre).GridToForm(id,"#form_ver_ementa");
+    })
 }
 
 
@@ -488,7 +458,8 @@ $this->_sections['cont_grade']['index_next'] = $this->_sections['cont_grade']['i
 $this->_sections['cont_grade']['first']      = ($this->_sections['cont_grade']['iteration'] == 1);
 $this->_sections['cont_grade']['last']       = ($this->_sections['cont_grade']['iteration'] == $this->_sections['cont_grade']['total']);
 ?>
-                <option><?php echo ((is_array($_tmp='Grade ')) ? $this->_run_mod_handler('cat', true, $_tmp, $this->_tpl_vars['grade'][$this->_sections['cont_grade']['index']]['id_grade']) : smarty_modifier_cat($_tmp, $this->_tpl_vars['grade'][$this->_sections['cont_grade']['index']]['id_grade'])); ?>
+                <option value="<?php echo $this->_tpl_vars['idGrade'][$this->_sections['cont_grade']['index']]['id']; ?>
+"><?php echo ((is_array($_tmp='Grade ')) ? $this->_run_mod_handler('cat', true, $_tmp, $this->_tpl_vars['grade'][$this->_sections['cont_grade']['index']]) : smarty_modifier_cat($_tmp, $this->_tpl_vars['grade'][$this->_sections['cont_grade']['index']])); ?>
 </option>
            <?php endfor; endif; ?>
      </select>
@@ -532,14 +503,18 @@ $this->_sections['cont_grade']['last']       = ($this->_sections['cont_grade']['
 </div>
 
 <div id="form">
+    <table id="list_grade_8" class="scroll" cellpadding="0" cellspacing="0"> </table>
+    <div id="pager_grade_8" class="scroll" style="text-align:center;"></div>
+</div>
+
+<div id="form">
     <table id="list_grade_optativa" class="scroll" cellpadding="0" cellspacing="0"> </table>
     <div id="pager_grade_optativa" class="scroll" style="text-align:center;"></div>
 </div>
 
 <!-- Formulário de cadastro e edição-->
  <form class="dialog-form" id="form_ver_ementa" style="display:none; background-color: white;">
-        <textarea name="visualizar_ementa" cols="28" rows="10" class="text ui-widget-content ui-corner-all aux"></textarea>
-
+        <textarea name="visualizar_ementa" cols="28" rows="10" readonly="readonly" class="text ui-widget-content ui-corner-all aux"></textarea>
  </form>
 
 

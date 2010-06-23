@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-06-18 09:02:59
+<?php /* Smarty version 2.6.26, created on 2010-06-22 22:42:32
          compiled from cad_info_curso.tpl */ ?>
 <script type="text/javascript" charset="ISO-8859-1">
     //-------------------------------------------- Ação sobre o botão OK --------------------------------------

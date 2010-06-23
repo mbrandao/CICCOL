@@ -405,6 +405,34 @@ h3 {
     margin-right: auto;
     
 }
+#envia_email {
+    margin-left: auto;
+    width: 70%;
+    margin-right: auto;
+    margin-top: 5%;
+    background-color: #f2f2f2
+}
+
+#envia_email label {
+    display: block;
+    float: left;
+    text-align: left;
+    padding-right: 20px;
+    padding-left: 5%;
+    padding-top: 2%;
+
+}
+
+#email-form_button {
+    width:120px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 65%;
+
+    text-align: center;
+    padding: 0;
+
+}
 
 #form_noticia {
     text-align: center;
@@ -654,8 +682,47 @@ h3 {
     margin-top:30px;
 }
 
+#ver_curriculo label {
+    display: block;
+    float: left;
+    text-align: left;
+    width: 90%;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid blue;
+
+}
+
+#ver_curriculo a{
+    text-decoration: underline;
+    font-weight: bolder;
+    color: steelblue;
+    
+}
+
+#ver_curriculo a:link{
+    text-decoration: underline;
+    font-weight: bolder;
+    color: steelblue;
+    
+}
+
+#ver_curriculo a:hover{
+    text-decoration: underline;
+    font-weight: bolder;
+    font-style: italic;
+    color: steelblue;
+
+}
+
+#ver_curriculo a:active{
+    text-decoration: underline;
+    font-weight: bolder;
+    color: red;
+}
+
 #form_grid_projeto {
-    margin-left: 9%;
+    margin-left: 6%;
 
 }
 
@@ -672,4 +739,15 @@ h3 {
     margin-right: auto;
 
     
+}
+
+
+/*Mensagem de Erro*/
+span.error{
+    background: url(images/unchecked.gif) no-repeat ;
+    color: #EA5200;
+    padding-left: 15px;
+    margin-left: 10px;
+    font-size:13px;
+
 }

@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -75,8 +76,8 @@ $(function() {
 
             <h3>Email</h3>
                 <ul>
-                    <li id="email_enviar"><a href="#">Enviar Email</a></li>
-                    <li id="email_historico"><a href="#">Histórico</a></li>
+                    <li id="admmod_email_enviar"><a href="#">Enviar Email</a></li>
+                    <li id="admmod_email_historico"><a href="#">Histórico</a></li>
                 </ul>
  
     </div>

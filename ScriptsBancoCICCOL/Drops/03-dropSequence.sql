@@ -17,7 +17,6 @@ DROP SEQUENCE seq_id_solicitar_cadast_sis     CASCADE;
 DROP SEQUENCE seq_id_telefone		      CASCADE;
 DROP SEQUENCE seq_id_user		      CASCADE;
 DROP SEQUENCE seq_id_sala		      CASCADE;
-DROP SEQUENCE seq_id_fluxograma       	      CASCADE;
 DROP SEQUENCE seq_id_grade		      CASCADE;
 DROP SEQUENCE seq_id_disciplina 	      CASCADE;
 DROP SEQUENCE seq_id_disciplinahorario	      CASCADE;

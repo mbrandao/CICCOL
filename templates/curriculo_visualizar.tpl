@@ -2,9 +2,10 @@
 
 // ------------------------------------Grid Projeto---------------------------
 var lastsel;
+
 jQuery("#list_cad_projeto").jqGrid({
     url:'libs/lib_projeto.php?reference=projeto&action=grid_buscar_projeto',
-    width: 400,
+    width: 430,
     height:150,
     datatype: "xml",
     colNames:['Descrição'],
@@ -41,23 +42,27 @@ jQuery("#list_cad_projeto").jqGrid({
 		<legend class="ui-widget ui-widget-header ui-corner-all"><!--{$docente}--></legend>
                     <br/>
 
-                    <label>Perfil Profissional</label>
-                    <textarea readonly="readonly" class="text ui-widget-content ui-corner-all" cols="35" rows="6"><!--{$perfil}--></textarea><br/><br/>
+                    <label>Perfil Profissional</label><br/>
+                    <p><!--{$perfil}--></p><br/><br/>
 
-                    <label>Último Emprego</label>
-                    <textarea readonly="readonly" class="text ui-widget-content ui-corner-all" cols="35" rows="3"><!--{$ultEmprego}--></textarea><br/><br/>
+                    <label>Último Emprego</label><br/>
+                    <p><!--{$ultEmprego}--></p><br/><br/>
 
-                    <label>Cargo Atual</label>
-                    <input readonly="readonly" class="text ui-widget-content ui-corner-all" value="<!--{$cargo}-->"/><br/><br/>
+                    <label>Cargo Atual</label><br/>
+                    <p><!--{$cargo}--></p><br/><br/>
 
-                    <label>Áreas de Interesse</label>
-                    <textarea readonly="readonly" class="text ui-widget-content ui-corner-all" cols="35" rows="2"><!--{$interesse}--></textarea>
+                    <label>Áreas de Interesse</label><br/>
+                    <p><!--{$interesse}--></p><br><br/>
+
+                    <label>Link para o Currículo Lattes</label><br/>
+                    <p><a href="<!--{$curLattes}-->" target="_blank"><!--{$curLattes}--></a></p>
                     <br/><br/><br/>
                     
                     <div id="form_grid_projeto">
                         <table id="list_cad_projeto" style="float: right" class="scroll" cellpadding="0" cellspacing="0"> </table>
                         <div id="pager_cad_projeto" class="scroll" style="text-align:center;"></div>
                     </div>
+                    
                     <br/>
          </fieldset>
     </form>

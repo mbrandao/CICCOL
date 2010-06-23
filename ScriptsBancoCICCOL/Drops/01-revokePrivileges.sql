@@ -24,7 +24,6 @@ REVOKE SELECT ON Curriculo				FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON Disciplina		        FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON DisciplinaHorario		FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON DisciplinaEmail		FROM GROUP administrador, moderador;
-REVOKE ALL PRIVILEGES ON DisciplinaFluxograma		FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON DisciplinaGradeCurricular	FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON DisciplinaRequisitaDisciplina	FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON DisciplinaSms			FROM GROUP administrador, moderador;
@@ -33,7 +32,6 @@ REVOKE ALL PRIVILEGES ON Docente			FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON Email				FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON Ementa				FROM GROUP administrador, moderador;
 
-REVOKE ALL PRIVILEGES ON Fluxograma			FROM GROUP administrador, moderador;
 REVOKE ALL PRIVILEGES ON Foto				FROM GROUP administrador, moderador;
 
 REVOKE ALL PRIVILEGES ON GradeCurricular		FROM GROUP administrador, moderador;

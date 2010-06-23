@@ -96,6 +96,9 @@ CREATE TABLE  Banner(
   tamanho       	   VARCHAR(80)   NOT NULL,
   dados         	   lo,
   admmod_matricula         VARCHAR(15)   NOT NULL,
+  dt_adicionado			TIMESTAMP NOT NULL,
+  dt_limite				TIMESTAMP NOT NULL,
+  motivo				VARCHAR,
   
   PRIMARY KEY  (id)
 
@@ -158,6 +161,7 @@ CREATE TABLE Curriculo(
    doc_matricula               VARCHAR(15)   NOT NULL   UNIQUE,
    id_cargo_atual              INTEGER,
    dt_criacao				   TIMESTAMP     NOT NULL,
+   lattes					   VARCHAR,	
    
 
    PRIMARY KEY  (id_curriculo)
@@ -208,23 +212,13 @@ CREATE TABLE DisciplinaEmail(
    PRIMARY KEY  (id, cod_disciplina, nome, turma)
 );
 
-/* Cria tabela DisciplinaFluxograma*/
-CREATE TABLE DisciplinaFluxograma(
-
-   cod_disciplina           VARCHAR(10)    NOT NULL,
-   nome                     VARCHAR(80)    NOT NULL,
-   turma    	            tipo_turma     NOT NULL,
-   id_fluxograma            INTEGER        NOT NULL,
-
-   PRIMARY KEY  (id_fluxograma, cod_disciplina, nome, turma)
-);
 
 /* Cria tabela DisciplinaGradeCurricular*/
 CREATE TABLE DisciplinaGradeCurricular(
 
    cod_disciplina           VARCHAR(10)    NOT NULL,
    nome                     VARCHAR(80)    NOT NULL,
-   turma    	            tipo_turma     NOT NULL,
+   turma                    tipo_turma     NOT NULL,
    id_grade                 INTEGER        NOT NULL,
 
    PRIMARY KEY  (id_grade, cod_disciplina, nome, turma)
@@ -241,6 +235,7 @@ CREATE TABLE DisciplinaRequisitaDisciplina(
    requisito_cod_disciplina       	    VARCHAR(10)    NOT NULL,
    requisito_nome                 	    VARCHAR(80)    NOT NULL,
    requisito_turma                	    tipo_turma     NOT NULL,
+   id_grade								INTEGER		   NOT NULL,
 
    PRIMARY KEY  (cod_disciplina, nome, turma, requisito_cod_disciplina, requisito_nome, requisito_turma)
 );
@@ -293,15 +288,6 @@ CREATE TABLE Ementa(
 
 );
 
-
-/* Cria tabela Fluxograma*/
-CREATE TABLE Fluxograma(
-
-   id_fluxograma	    INTEGER	   DEFAULT NEXTVAL('seq_id_fluxograma')   NOT NULL,
-   dt_implantacao           TIMESTAMP      NOT NULL	UNIQUE,
-
-   PRIMARY KEY  (id_fluxograma)
-);
 
 /* Cria a tabela Foto */
 CREATE TABLE  Foto(

@@ -1,5 +1,6 @@
-<?php /* Smarty version 2.6.26, created on 2010-06-08 10:03:39
+<?php /* Smarty version 2.6.26, created on 2010-06-22 22:57:17
          compiled from professor.tpl */ ?>
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -63,8 +64,8 @@ $(function() {
 
             <h3>Email</h3>
                 <ul>
-                    <li id="email_enviar"><a href="#">Enviar Email</a></li>
-                    <li id="email_historico"><a href="#">Histórico</a></li>
+                    <li id="doc_email_enviar"><a href="#">Enviar Email</a></li>
+                    <li id="doc_email_historico"><a href="#">Histórico</a></li>
                 </ul>
 
     </div>

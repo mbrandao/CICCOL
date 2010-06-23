@@ -20,6 +20,8 @@
         <script src="js/jqDnR.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.maskedinput-1.2.2.js"></script>
 
+        <script type="text/javascript" src="js/jquery.validate.js"></script>
+
 </head>
 
 
